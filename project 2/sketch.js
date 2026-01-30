@@ -12,13 +12,13 @@ function draw() {
   // console.log('Hello from draw');
   stroke('blue');
   // line(x1, y1, x2, y2);
-  line(100, 50, 300, 250);
-  line(300, 50, 100, 250);
+  line(50, 50, 350, 350);
+  line(350, 50, 50, 350);
 
   stroke('red');
   strokeWeight(5);
-  line(100, 50, 300, 50);
-  line(300, 50, 300, 250);
-  line(100, 250, 300, 250);
-  line(100, 250, 100, 50);
+  line(50, 50, 350, 50);
+  line(350, 50, 350, 350);
+  line(50, 350, 350, 350);
+  line(50, 350, 50, 50);
 }
