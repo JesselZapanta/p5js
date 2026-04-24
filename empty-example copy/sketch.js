@@ -1,33 +1,27 @@
-let points = [];
+let isDrawing = false;
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(600, 600);
+  background(255);
 }
 
 function draw() {
-  background(220);
-
-  fill(0);
-  textSize(16);
-  text('Left click: draw red  |  Right click: draw blue', 20, 30);
-
-  // redraw all stored circles/ 60 - per second
-  for (let p of points) {
-    fill(p.color);
-    circle(p.x, p.y, 30);
+  // While mouse is pressed, draw a line to the current position
+  if (isDrawing) {
+    stroke(0);
+    strokeWeight(3);
+    line(pmouseX, pmouseY, mouseX, mouseY);
   }
+  
+  fill(0);
+  textSize(12);
+  text('Drag to draw', 10, 20);
 }
 
 function mousePressed() {
-  // LEFT click
-  if (mouseButton === LEFT) {
-    points.push({ x: mouseX, y: mouseY, color: [255, 0, 0] });
-  }
+  isDrawing = true;
+}
 
-  // RIGHT click
-  if (mouseButton === RIGHT) {
-    points.push({ x: mouseX, y: mouseY, color: [0, 0, 255] });
-  }
-
-  return false; // prevents right-click menu
+function mouseReleased() {
+  isDrawing = false;
 }
