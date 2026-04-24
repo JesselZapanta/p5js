@@ -1,44 +1,33 @@
 let points = [];
-let currentColor = [0, 0, 0]; // Default: black
 
 function setup() {
   createCanvas(500, 500);
-  background(255);
 }
 
 function draw() {
-  background(255);
-  
-  // Draw all points with their stored colors
-  for (let i = 0; i < points.length; i++) {
-    fill(points[i].color[0], points[i].color[1], points[i].color[2]);
-    circle(points[i].x, points[i].y, 10);
+  background(220);
+
+  fill(0);
+  textSize(16);
+  text('Left click: draw red  |  Right click: draw blue', 20, 30);
+
+  // redraw all stored circles/ 60 - per second
+  for (let p of points) {
+    fill(p.color);
+    circle(p.x, p.y, 30);
   }
 }
 
 function mousePressed() {
-  points.push({
-    x: mouseX,
-    y: mouseY,
-    color: currentColor
-  });
-}
+  // LEFT click
+  if (mouseButton === LEFT) {
+    points.push({ x: mouseX, y: mouseY, color: [255, 0, 0] });
+  }
 
-function keyPressed() {
-  // 'R' for red
-  if (key === 'R' || key === 'r') {
-    currentColor = [255, 0, 0];
+  // RIGHT click
+  if (mouseButton === RIGHT) {
+    points.push({ x: mouseX, y: mouseY, color: [0, 0, 255] });
   }
-  // 'G' for green
-  if (key === 'G' || key === 'g') {
-    currentColor = [0, 255, 0];
-  }
-  // 'B' for blue
-  if (key === 'B' || key === 'b') {
-    currentColor = [0, 0, 255];
-  }
-  // 'C' for clear
-  if (key === 'C' || key === 'c') {
-    points = [];
-  }
+
+  return false; // prevents right-click menu
 }
