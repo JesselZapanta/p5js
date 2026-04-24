@@ -1,0 +1,30 @@
+let → values that change over time (position, size, color)
+const → values that stay fixed (canvas size, static colors)
+
+Animation = changing variables every frame
+No variables = no movement
+
+
+//the use of variable
+let x = 50;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(220);
+  circle(x, 200, 50);
+}
+
+====
+
+let x = 50;
+
+function draw() {
+  background(220);
+  circle(x, 200, 50);
+  x = x + 2; // movement
+}
+
+If it’s inside draw(), it repeats. If it repeats, it can animate.

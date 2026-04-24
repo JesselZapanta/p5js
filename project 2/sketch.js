@@ -1,7 +1,7 @@
   function setup() {
   // put setup code here
     // createCanvas(h, w);
-    createCanvas(400, 400);
+    createCanvas(300, 300);
     // background('white');//string 
     background(255);//grayscale 
     // background(255, 255, 255);//rgb 
@@ -44,14 +44,31 @@
     // // noStroke();
     // circle(200, 200, 50);
 
-    fill('red');
-    circle(75, 100, 100);
-    fill('blue');
-    circle(200, 100, 100);
-    fill('orange');
-    circle(325, 100, 100);
-    fill('brown');
-    circle(75, 225, 100);
-    circle(200, 225, 100);
-    circle(325, 225, 100);
-  }
+    // fill('red');
+    // circle(75, 100, 100);
+    // fill('blue');
+    // circle(200, 100, 100);
+    // fill('orange');
+    // circle(325, 100, 100);
+    // fill('brown');
+    // circle(75, 225, 100);
+    // circle(200, 225, 100);
+    // circle(325, 225, 100);
+    
+    fill('gray');
+    // stroke('blue');
+    // strokeWeight(4);
+    noStroke();
+    square(50,50,200,10);
+    
+    fill(255, 0, 45);
+    circle(100, 100, 50);
+    fill(255, 60, 255);
+    circle(200, 100, 50);
+    fill(0, 60, 255);
+    circle(150, 150, 50);
+    fill(255, 200, 255);
+    circle(100, 200, 50);
+    fill(255, 200, 30);
+    circle(200, 200, 50);
+  }   
