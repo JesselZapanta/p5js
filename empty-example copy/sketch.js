@@ -1,42 +1,44 @@
 let points = [];
-let shapeMode = 'circle'; // 'circle' or 'square'
+let currentColor = [0, 0, 0]; // Default: black
 
 function setup() {
   createCanvas(500, 500);
+  background(255);
 }
 
 function draw() {
   background(255);
   
-  fill(100, 150, 255);
+  // Draw all points with their stored colors
   for (let i = 0; i < points.length; i++) {
-    let p = points[i];
-
-    if (shapeMode === 'circle') {
-      circle(p.x, p.y, 20);
-    } else {
-      square(p.x - 10, p.y - 10, 20);
-    }
+    fill(points[i].color[0], points[i].color[1], points[i].color[2]);
+    circle(points[i].x, points[i].y, 10);
   }
-  
-  fill(0);
-  textSize(12);
-  text('Press S to toggle shape | Click to draw', 10, 20);
 }
 
 function mousePressed() {
-  points.push({ x: mouseX, y: mouseY });
+  points.push({
+    x: mouseX,
+    y: mouseY,
+    color: currentColor
+  });
 }
 
 function keyPressed() {
-  if (key ==='S' || key === 's') {
-    shapeMode = (shapeMode === 'circle') ? 'square' : 'circle';
+  // 'R' for red
+  if (key === 'R' || key === 'r') {
+    currentColor = [255, 0, 0];
   }
-}
-
-
-if(shapeMode === 'circle'){
-  square;
-}else {
-  circle;
+  // 'G' for green
+  if (key === 'G' || key === 'g') {
+    currentColor = [0, 255, 0];
+  }
+  // 'B' for blue
+  if (key === 'B' || key === 'b') {
+    currentColor = [0, 0, 255];
+  }
+  // 'C' for clear
+  if (key === 'C' || key === 'c') {
+    points = [];
+  }
 }
