@@ -1,37 +1,33 @@
-let x = 250;
-let y = 250;
-let speed = 10;
+let points = [];
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(600, 600);
+  background(255);
+
+    
+  fill(0);
+  textSize(12);
+  text('Click to draw | Press C to clear', 10, 20);
 }
 
 function draw() {
-  background(220);
+  background(255);
   
-  fill(100, 150, 255);
-  circle(x, y, 30);
-  
-  fill(0);
-  textSize(12);
-  text('Use arrow keys to move circle', 10, 20);
+  stroke(0);
+  strokeWeight(2);
+  for (let i = 0; i < points.length - 1; i++) {
+    line(points[i].x, points[i].y, points[i+1].x, points[i+1].y);
+  }
+
+}
+
+function mousePressed() {
+  points.push({ x: mouseX, y: mouseY });
 }
 
 function keyPressed() {
-  // LEFT arrow
-  if (keyCode === LEFT_ARROW) {
-    x -= speed;
-  }
-  // RIGHT arrow
-  if (keyCode === RIGHT_ARROW) {
-    x += speed;
-  }
-  // UP arrow
-  if (keyCode === UP_ARROW) {
-    y -= speed;
-  }
-  // DOWN arrow
-  if (keyCode === DOWN_ARROW) {
-    y += speed;
+  if (key === 'C' || key === 'c') {
+    points = []; // Empty the array
+    background(255); // Clear display
   }
 }
