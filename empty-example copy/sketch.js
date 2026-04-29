@@ -1,35 +1,37 @@
-let points = [];
-let shapeMode = 'circle'; // 'circle' or 'square'
+let x = 250;
+let y = 250;
+let speed = 10;
 
 function setup() {
   createCanvas(500, 500);
 }
 
 function draw() {
-  background(255);
+  background(220);
   
   fill(100, 150, 255);
-  for (let i = 0; i < points.length; i++) {
-    let p = points[i];
-
-    if (shapeMode === 'circle') {
-      circle(p.x, p.y, 20);
-    } else {
-      square(p.x - 10, p.y - 10, 20);
-    }
-  }
+  circle(x, y, 30);
   
   fill(0);
   textSize(12);
-  text('Press S to toggle shape | Click to draw', 10, 20);
-}
-
-function mousePressed() {
-  points.push({ x: mouseX, y: mouseY });
+  text('Use arrow keys to move circle', 10, 20);
 }
 
 function keyPressed() {
-  if (key === 'S' || key === 's') {
-    shapeMode = (shapeMode === 'circle') ? 'square' : 'circle';
+  // LEFT arrow
+  if (keyCode === LEFT_ARROW) {
+    x -= speed;
+  }
+  // RIGHT arrow
+  if (keyCode === RIGHT_ARROW) {
+    x += speed;
+  }
+  // UP arrow
+  if (keyCode === UP_ARROW) {
+    y -= speed;
+  }
+  // DOWN arrow
+  if (keyCode === DOWN_ARROW) {
+    y += speed;
   }
 }
